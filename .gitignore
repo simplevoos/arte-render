@@ -1,0 +1,13 @@
+node_modules/
+*.pdf
+test_*.jpg
+sample_*.png
+prev_*.png
+chk_*.png
+insp_*.png
+zoom_*.png
+sim_*.png
+logo_page*.png
+logo_crop.png
+marca_pg/
+extract/
