@@ -1,0 +1,13 @@
+{
+  "name": "arte-render-simplevoos",
+  "version": "1.0.0",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": { "start": "node server.js" },
+  "dependencies": {
+    "express": "^4.19.2",
+    "satori": "^0.10.13",
+    "@resvg/resvg-js": "^2.6.2",
+    "@fontsource/montserrat": "^5.0.18"
+  }
+}
