@@ -10,16 +10,25 @@ app.get('/art', async (req, res) => {
   try {
     const {
       photo, title = '', subtitle = 'Leia a legenda',
-      pills = '', accentColor = '#28a7e0', w, h,
+      pills = '', accentColor = '#28a7e0', w, h, format,
     } = req.query;
+    // atalho de formato: story (9:16), feed/portrait (4:5), square/post (1:1)
+    const sizes = {
+      story: [1080, 1920], stories: [1080, 1920], reel: [1080, 1920],
+      feed: [1080, 1350], portrait: [1080, 1350], retrato: [1080, 1350],
+      square: [1080, 1080], post: [1080, 1080], quadrado: [1080, 1080], carrossel: [1080, 1080],
+    };
+    let [W, H] = sizes[String(format || '').toLowerCase()] || [1080, 1080];
+    if (w) W = parseInt(w, 10);
+    if (h) H = parseInt(h, 10);
     const png = await renderArt({
       photo,
       title,
       subtitle,
       pills: pills ? String(pills).split('|') : [],
       accentColor,
-      width: w ? parseInt(w, 10) : 1080,
-      height: h ? parseInt(h, 10) : 1080,
+      width: W,
+      height: H,
     });
     res.set('Content-Type', 'image/png');
     res.set('Cache-Control', 'public, max-age=86400');

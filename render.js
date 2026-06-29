@@ -144,13 +144,14 @@ export async function renderArt(opts) {
   const logoBlock = h('div', {
     display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%',
   }, LOGO_URI
-    ? [{ type: 'img', props: { src: LOGO_URI, width: 320, height: 53, style: {} } }]
+    ? [{ type: 'img', props: { src: LOGO_URI, width: 326, height: 64, style: {} } }]
     : [wordmark]
   );
 
   const content = h('div', {
     position: 'relative', width, height, display: 'flex', flexDirection: 'column',
-    justifyContent: 'space-between', padding: '74px 64px 64px 64px',
+    justifyContent: 'space-between',
+    padding: (height / width > 1.4 ? '170px 64px 230px 64px' : '74px 64px 64px 64px'),
     fontFamily: 'Montserrat',
   }, [topBlock, pillsBlock, logoBlock]);
 
